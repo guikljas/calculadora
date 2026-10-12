@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Calculadora FORM com histórico local e suporte a teclado."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>FORM — Calculadora</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- CABEÇALHO -->
+    <header class="navbar">
+      <div class="navbar-left">
+        <button
+          class="icon-button menu-button"
+          id="menu-toggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="help-panel"
+        >
+          ☰
+        </button>
+        <span class="logo">FORM</span>
+        <span class="page-name">Calculadora</span>
+      </div>
+      <div class="navbar-right">
+        <span class="message">Um pouco de espaço para a claridade.</span>
+        <button
+          class="icon-button theme-button"
+          id="theme-toggle"
+          type="button"
+          aria-label="Ativar modo escuro"
+          aria-pressed="false"
+        >
+          ☀
+        </button>
+      </div>
+    </header>
+
+    <!-- MENU DE AJUDA -->
+    <aside
+      class="help-panel"
+      id="help-panel"
+      aria-label="Ajuda da calculadora"
+      hidden
+    >
+      <div class="help-panel-header">
+        <strong>FORM</strong>
+        <button
+          class="close-button"
+          id="menu-close"
+          type="button"
+          aria-label="Fechar menu"
+        >
+          ×
+        </button>
+      </div>
+      <p>Use os botões ou o teclado para calcular.</p>
+      <ul>
+        <li><kbd>Enter</kbd> ou <kbd>=</kbd> calcula</li>
+        <li><kbd>Backspace</kbd> apaga</li>
+        <li><kbd>Esc</kbd> limpa</li>
+        <li><kbd>%</kbd> calcula porcentagem</li>
+      </ul>
+    </aside>
+
+    <!-- APLICAÇÃO -->
+    <div class="app-layout">
+      <div class="calculator-card">
+        <main class="calculator" aria-label="Calculadora">
+          <div class="calculator-eyebrow" aria-hidden="true">
+            <span>FORM / CALC</span><span class="status-dot">LOCAL</span>
+          </div>
+          <label class="sr-only" for="display">Expressão ou resultado</label>
+          <div class="display-shell">
+            <output
+              id="display"
+              class="display"
+              aria-live="polite"
+              aria-atomic="true"
+              >0</output
+            >
+          </div>
+
+          <!-- TECLADO DA CALCULADORA -->
+          <div class="buttons" aria-label="Teclado da calculadora">
+            <button type="button" class="utility" data-action="clear">
+              AC
+            </button>
+            <button
+              type="button"
+              class="utility"
+              data-action="sign"
+              aria-label="Inverter sinal"
+            >
+              ±
+            </button>
+            <button type="button" class="utility" data-action="percent">
+              %
+            </button>
+            <button
+              type="button"
+              class="operator"
+              data-value="/"
+              aria-label="Dividir"
+            >
+              ÷
+            </button>
+            <button type="button" data-value="7">7</button
+            ><button type="button" data-value="8">8</button
+            ><button type="button" data-value="9">9</button>
+            <button
+              type="button"
+              class="operator"
+              data-value="*"
+              aria-label="Multiplicar"
+            >
+              ×
+            </button>
+            <button type="button" data-value="4">4</button
+            ><button type="button" data-value="5">5</button
+            ><button type="button" data-value="6">6</button>
+            <button
+              type="button"
+              class="operator"
+              data-value="-"
+              aria-label="Subtrair"
+            >
+              −
+            </button>
+            <button type="button" data-value="1">1</button
+            ><button type="button" data-value="2">2</button
+            ><button type="button" data-value="3">3</button>
+            <button
+              type="button"
+              class="operator"
+              data-value="+"
+              aria-label="Somar"
+            >
+              +
+            </button>
+            <button
+              type="button"
+              class="utility"
+              data-action="backspace"
+              aria-label="Apagar último caractere"
+            >
+              ⌫
+            </button>
+            <button type="button" data-value="0">0</button
+            ><button type="button" data-value=".">.</button>
+            <button
+              type="button"
+              class="equals"
+              data-action="calculate"
+              aria-label="Calcular"
+            >
+              =
+            </button>
+          </div>
+        </main>
+
+        <!-- HISTÓRICO -->
+        <aside class="history" aria-labelledby="history-title">
+          <div class="history-header">
+            <h2 id="history-title">Histórico</h2>
+            <button type="button" id="clear-history">Limpar</button>
+          </div>
+          <div class="history-list" id="history-list" aria-live="polite"></div>
+          <p class="empty-history" id="empty-history">
+            Seu histórico de cálculos aparecerá aqui.
+          </p>
+          <div class="history-footer">
+            Selecione um resultado para utilizá-lo novamente.
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer class="calculator-footer">
+      <p>© 2026 FORM. Todos os direitos reservados.</p>
+    </footer>
+  </body>
+</html>
